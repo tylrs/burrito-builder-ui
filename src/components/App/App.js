@@ -5,12 +5,15 @@ import Orders from '../../components/Orders/Orders';
 import OrderForm from '../../components/OrderForm/OrderForm';
 
 const App = () => {
+  const [orders, setOrders] = useState([])
 
-  
   useEffect(() => {
     getOrders()
+    .then(data => {
+      setOrders(data.orders)
+    })
     .catch(err => console.error('Error fetching:', err));
-  })
+  }, [])
 
   return (
     <main className="App">
@@ -19,7 +22,7 @@ const App = () => {
         <OrderForm />
       </header>
 
-      <Orders orders={this.state.orders}/>
+      <Orders orders={orders}/>
     </main>
   );
 }
