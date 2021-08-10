@@ -13,3 +13,16 @@ export const sendOrder = (order) => {
   })
   .then(response => response.json())
 }
+
+export const sendDelete = (id) => {
+  // console.log(id)
+  return fetch(`http://localhost:3001/api/v1/orders/${id}`, {
+    method: 'DELETE'
+  })
+  .then(response => {
+    if (response.status === 204) {
+      return response.status
+    } 
+  })
+}
+
