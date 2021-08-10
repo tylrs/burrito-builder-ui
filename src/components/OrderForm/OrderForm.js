@@ -25,8 +25,9 @@ const OrderForm = ({submitOrder}) => {
   const handleIngredientSubmit = e => {
     setError('')
     e.preventDefault()
-    ingredients.includes(e.target.name)
-    ? setError('You cannot have more than one of the same ingredient')
+    let checkedIngredients = ingredients.filter(ingredient => ingredient === e.target.name)
+    checkedIngredients.length >= 2
+    ? setError('You cannot have more than two of the same ingredient')
     : setIngredients([...ingredients, e.target.name])
   }
   

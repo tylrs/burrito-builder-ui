@@ -19,10 +19,11 @@ export const sendDelete = (id) => {
     method: 'DELETE'
   })
   .then(response => {
-    console.log(response)
     if (response.status === 204) {
       return response.status
-    } 
+    } else {
+      throw Error(response.statusText)
+    }
   })
 }
 
