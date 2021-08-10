@@ -1,4 +1,4 @@
-describe('View Orders On Page Load', () => {
+describe('Homepage user flow', () => {
 
     beforeEach(() => {
         cy.fixture('orders.json').then(orders => {
