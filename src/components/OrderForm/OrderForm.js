@@ -9,8 +9,8 @@ const OrderForm = ({submitOrder}) => {
   const handleSubmit = e => {
       e.preventDefault();
       setError('');
-      if (!ingredients || !name) {
-        setError('Please enter name and at least once ingredient')
+      if (!ingredients.length || !name) {
+        setError('Please enter name and at least one ingredient')
       } else {
         submitOrder({name, ingredients})
         clearInputs();

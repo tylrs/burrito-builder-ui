@@ -35,7 +35,7 @@ describe('View Orders On Page Load', () => {
             .contains('jalapeno')
     })
 
-    it ('Should be able to submit an order', () => {
+    it('Should be able to submit an order', () => {
         cy.fixture('newOrder.json').then(newOrder => {
             cy.intercept('POST', 'http://localhost:3001/api/v1/orders', newOrder)
         })
@@ -61,5 +61,18 @@ describe('View Orders On Page Load', () => {
             .contains('steak')
             .get('section > :nth-child(4)')
             .contains('carnitas')
+            .get('form > p')
+            .contains('Order: Nothing selected')
+    })
+
+    it('Should not submit an order if name input field or buttons are not filled out', () => {
+        cy
+            .get('input')
+            .type('Taylor')
+            .get('.submit-button')
+            .click()
+            .get(':nth-child(15)')
+            .contains('Please enter name and at least one ingredient')
+
     })
 })
