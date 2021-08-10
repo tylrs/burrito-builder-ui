@@ -35,6 +35,13 @@ describe('View Orders On Page Load', () => {
             .contains('jalapeno')
     })
 
+    it('Should show a message if there are no orders returned', () => {
+        cy.intercept('GET', 'http://localhost:3001/api/v1/orders', {"orders": []})
+        cy 
+            .get('section > p')
+            .contains('No orders yet!')
+    })
+
     it('Should be able to submit an order', () => {
         cy.fixture('newOrder.json').then(newOrder => {
             cy.intercept('POST', 'http://localhost:3001/api/v1/orders', newOrder)
