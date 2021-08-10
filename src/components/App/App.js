@@ -25,7 +25,7 @@ const App = () => {
 
   const submitDelete = (id) => {
     sendDelete(id)
-    .then(message => {
+    .then(() => {
       const filtered = orders.filter(order => order.id !== id)
       setOrders(filtered)
     })

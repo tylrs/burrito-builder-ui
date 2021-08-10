@@ -82,4 +82,27 @@ describe('Homepage user flow', () => {
             .contains('Please enter name and at least one ingredient')
 
     })
+
+    it ('Should be able to delete an order', () => {
+        cy.intercept('DELETE', 'http://localhost:3001/api/v1/orders/:order_id', {status: 204})
+
+        cy
+            .get(':nth-child(1) > button')
+            .click()
+            .get ('.order')
+            .should('have.length', 2)
+            .get('section > :nth-child(1)')
+            .contains('Sam')
+            .get('section > :nth-child(1)')
+            .contains('steak')
+            .get('section > :nth-child(1)')
+            .contains('pico de gallo')
+            .get('section > :nth-child(1)')
+            .contains('carnitas')
+            .get('section > :nth-child(1)')
+            .contains('queso fresco')
+            .get('section > :nth-child(1)')
+            .contains('jalapeno')
+
+    })
 })
