@@ -23,8 +23,11 @@ const OrderForm = ({submitOrder}) => {
   }
 
   const handleIngredientSubmit = e => {
+    setError('')
     e.preventDefault()
-    setIngredients([...ingredients, e.target.name])
+    ingredients.includes(e.target.name)
+    ? setError('You cannot have more than one of the same ingredient')
+    : setIngredients([...ingredients, e.target.name])
   }
   
   const possibleIngredients = ['beans', 'steak', 'carnitas', 'sofritas', 'lettuce', 'queso fresco', 'pico de gallo', 'hot sauce', 'guacamole', 'jalapenos', 'cilantro', 'sour cream'];
