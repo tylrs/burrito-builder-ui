@@ -1,27 +1,29 @@
 import React, { useState } from 'react';
 
 
-const OrderForm = () => {
-const [name, useName] = useState('')
-const [ingredients, useIngredients] = useState([])
+const OrderForm = ({submitOrder}) => {
+  const [name, setName] = useState('')
+  const [ingredients, setIngredients] = useState([])
 
   const handleSubmit = e => {
       e.preventDefault();
-      this.clearInputs();
+      clearInputs();
   }
 
   const clearInputs = () => {
-    this.setState({name: '', ingredients: []});
+    setName('')
+    setIngredients([])
   }
 
-  const handleNameChange = () => {
-    
+  const handleIngredientSubmit = e => {
+    e.preventDefault()
+    setIngredients([...ingredients, e.target.name])
   }
   
   const possibleIngredients = ['beans', 'steak', 'carnitas', 'sofritas', 'lettuce', 'queso fresco', 'pico de gallo', 'hot sauce', 'guacamole', 'jalapenos', 'cilantro', 'sour cream'];
   const ingredientButtons = possibleIngredients.map(ingredient => {
     return (
-      <button key={ingredient} name={ingredient} onClick={e => this.handleIngredientChange(e)}>
+      <button key={ingredient} name={ingredient} onClick={e => handleIngredientSubmit(e)}>
         {ingredient}
       </button>
     )
@@ -34,7 +36,7 @@ const [ingredients, useIngredients] = useState([])
         placeholder='Name'
         name='name'
         value={name}
-        onChange={e => this.handleNameChange(e)}
+        onChange={e => setName(e.target.value)}
       />
   
       { ingredientButtons }

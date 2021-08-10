@@ -15,13 +15,16 @@ const App = () => {
     .catch(err => console.error('Error fetching:', err));
   }, [])
 
+  const submitOrder = () => {
+
+  }
+
   return (
     <main className="App">
       <header>
         <h1>Burrito Builder</h1>
-        <OrderForm />
+        <OrderForm submitOrder={submitOrder}/>
       </header>
-
       <Orders orders={orders}/>
     </main>
   );
