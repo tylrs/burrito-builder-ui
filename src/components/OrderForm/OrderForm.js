@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import './OrderForm.css'
 
 
 const OrderForm = ({submitOrder}) => {
@@ -42,6 +43,8 @@ const OrderForm = ({submitOrder}) => {
   
   return (
     <form>
+      <h2>Enter Your Order Here:</h2>
+      <label>What's Your Name?</label>
       <input
         type='text'
         placeholder='Name'
@@ -49,11 +52,12 @@ const OrderForm = ({submitOrder}) => {
         value={name}
         onChange={e => setName(e.target.value)}
       />
-  
-      { ingredientButtons }
-  
+      <p>Select Your Ingredients here:</p>
+      <div className='button-container'>
+        { ingredientButtons }
+      </div>
       <p>Order: { ingredients.join(', ') || 'Nothing selected' }</p>
-      {error && <p>{error}</p>}
+      {error && <p className='error-message'>{error}</p>}
   
       <button className='submit-button' onClick={e => handleSubmit(e)}>
         Submit Order
