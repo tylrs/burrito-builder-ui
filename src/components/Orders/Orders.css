@@ -1,8 +1,9 @@
 .orders-container {
   display: grid;
-  gap: 4px;
-  grid-template-columns: repeat(4, 1fr);
-  margin-top: 2%;;
+  gap: 3%;
+  grid-template-columns: repeat(3, 1fr);
+  margin-top: 2%;
+  margin-left: 2%;
 }
 
 .order {
