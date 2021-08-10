@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import './App.css';
-import {getOrders} from '../../apiCalls';
+import {getOrders, sendOrder} from '../../apiCalls';
 import Orders from '../../components/Orders/Orders';
 import OrderForm from '../../components/OrderForm/OrderForm';
 
@@ -15,8 +15,12 @@ const App = () => {
     .catch(err => console.error('Error fetching:', err));
   }, [])
 
-  const submitOrder = () => {
-
+  const submitOrder = (newOrder) => {
+    sendOrder(newOrder)
+    .then(order => {
+      setOrders([...orders, order])
+    })
+    .catch(err => console.error(err))
   }
 
   return (
