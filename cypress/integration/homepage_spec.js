@@ -13,7 +13,7 @@ describe('Homepage user flow', () => {
             .contains('Burrito Builder')
             .get('input')
             .should('be.visible')
-            .get('form > .ingredient-button')
+            .get('.button-container > .ingredient-button')
             .should('have.length', 12)
             .get('form > p')
             .contains('Order: Nothing selected')
@@ -38,7 +38,7 @@ describe('Homepage user flow', () => {
     it('Should show a message if there are no orders returned', () => {
         cy.intercept('GET', 'http://localhost:3001/api/v1/orders', {"orders": []})
         cy 
-            .get('section > p')
+            .get('.orders-container > p')
             .contains('No orders yet!')
     })
 
