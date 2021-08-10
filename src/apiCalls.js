@@ -21,9 +21,7 @@ export const sendDelete = (id) => {
   .then(response => {
     if (response.status === 204) {
       return response.status
-    } else {
-      throw Error(response.statusText)
-    }
+    } 
   })
 }
 

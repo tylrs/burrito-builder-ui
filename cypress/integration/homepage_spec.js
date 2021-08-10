@@ -78,7 +78,7 @@ describe('Homepage user flow', () => {
             .type('Taylor')
             .get('.submit-button')
             .click()
-            .get(':nth-child(15)')
+            .get('.error-message')
             .contains('Please enter name and at least one ingredient')
 
     })
@@ -103,6 +103,5 @@ describe('Homepage user flow', () => {
             .contains('queso fresco')
             .get('section > :nth-child(1)')
             .contains('jalapeno')
-
     })
 })
