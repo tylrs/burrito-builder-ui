@@ -11,7 +11,7 @@ const OrderForm = ({submitOrder}) => {
       setError('');
       if (!ingredients.length || !name) {
         setError('Please enter name and at least one ingredient')
-      } else {
+      } else { 
         submitOrder({name, ingredients})
         clearInputs();
       }
@@ -61,19 +61,5 @@ const OrderForm = ({submitOrder}) => {
   )
 
 }
-// class OrderForm extends Component {
-//   constructor(props) {
-    // super();
-  //   this.props = props;
-  //   this.state = {
-  //     name: '',
-  //     ingredients: []
-  //   };
-  // }
-
-
-//   render() {
-//   }
-// }
 
 export default OrderForm;

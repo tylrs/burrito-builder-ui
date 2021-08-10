@@ -42,20 +42,5 @@ const App = () => {
     </main>
   );
 }
-// class App extends Component {
-//   constructor(props) {
-//     super();
-//   }
-
-//   componentDidMount() {
-//     getOrders()
-//       .catch(err => console.error('Error fetching:', err));
-//   }
-
-//   render() {
-  
-//   }
-// }
-
 
 export default App;
