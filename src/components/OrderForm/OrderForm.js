@@ -4,10 +4,17 @@ import React, { useState } from 'react';
 const OrderForm = ({submitOrder}) => {
   const [name, setName] = useState('')
   const [ingredients, setIngredients] = useState([])
+  const [error, setError] = useState('')
 
   const handleSubmit = e => {
       e.preventDefault();
-      clearInputs();
+      setError('');
+      if (!ingredients || !name) {
+        setError('Please enter name and at least once ingredient')
+      } else {
+        submitOrder({name, ingredients})
+        clearInputs();
+      }
   }
 
   const clearInputs = () => {
@@ -42,6 +49,7 @@ const OrderForm = ({submitOrder}) => {
       { ingredientButtons }
   
       <p>Order: { ingredients.join(', ') || 'Nothing selected' }</p>
+      {error && <p>{error}</p>}
   
       <button onClick={e => handleSubmit(e)}>
         Submit Order
