@@ -1,12 +1,22 @@
+.orders-container {
+  display: grid;
+  gap: 4px;
+  grid-template-columns: repeat(4, 1fr);
+  margin-top: 2%;;
+}
+
 .order {
+  background-color: #FFF;
   border: 1px solid black;
   display: inline-block;
-  margin: 10px;
-  background-color: #FFF;
+  height: 100%;
+  width: 100%;
+  padding: 1.5%;
+  text-transform: capitalize;
+  text-align: center;
 }
 
 .ingredient-list {
-  list-style-type: none;
+  list-style-type:none;
   padding: 0;
-  width: 150px;
 }
