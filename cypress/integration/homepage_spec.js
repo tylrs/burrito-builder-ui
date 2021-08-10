@@ -34,4 +34,32 @@ describe('View Orders On Page Load', () => {
             .get('section > :nth-child(1)')
             .contains('jalapeno')
     })
+
+    it ('Should be able to submit an order', () => {
+        cy.fixture('newOrder.json').then(newOrder => {
+            cy.intercept('POST', 'http://localhost:3001/api/v1/orders', newOrder)
+        })
+
+        cy
+            .get('input')
+            .type('Taylor')
+            .get('[name="beans"]')
+            .click()
+            .get('[name="queso fresco"]')
+            .click()
+            .get('[name="hot sauce"]')
+            .click()
+            .get('form > p')
+            .contains('Order: beans, queso fresco, hot sauce')
+            .get('.submit-button')
+            .click()
+            .get('section > :nth-child(4)')
+            .contains('Taylor')
+            .get('section > :nth-child(4)')
+            .contains('beans')
+            .get('section > :nth-child(4)')
+            .contains('steak')
+            .get('section > :nth-child(4)')
+            .contains('carnitas')
+    })
 })
