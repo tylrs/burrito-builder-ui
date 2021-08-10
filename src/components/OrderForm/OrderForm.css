@@ -4,8 +4,6 @@ form {
     border-bottom: 1px solid black;
     display: flex;
     flex-direction: column;
-    /* padding: 1.5%; */
-    /* width: 40%; */
 }
 
 button {
